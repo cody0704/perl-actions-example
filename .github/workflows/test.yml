@@ -11,13 +11,13 @@ jobs:
 
     strategy:
       matrix:
-        perl-version: ['5.8','5.10','5.16','latest']
+        perl-version: ['516','520','524']
         platform: [ubuntu-latest]
 
     runs-on: ${{ matrix.platform }}
 
     container:
-      image: perl:${{ matrix.perl-version }}
+      image: perl-${{ matrix.perl-version }}-centos7
 
     steps:
     - name: Check out code
