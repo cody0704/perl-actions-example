@@ -11,7 +11,7 @@ jobs:
 
     strategy:
       matrix:
-        perl-version: ['516','520','524']
+        perl-version: ['520','524','526']
         platform: [ubuntu-latest]
 
     runs-on: ${{ matrix.platform }}
