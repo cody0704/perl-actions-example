@@ -32,4 +32,4 @@ jobs:
 
     - name: Tesing
       run: |
-        make test
+        prove -l t
