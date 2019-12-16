@@ -1,0 +1,27 @@
+name: Test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  perl:
+
+    strategy:
+      matrix:
+        perl-version: ['5.8','5.10','5.16','latest']
+
+    runs-on: ${{ matrix.platform }}
+
+    container:
+      image: perl:${{ matrix.perl-version }}
+      
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v1
+
+    - name: Tesing
+      run: |
+        make test
