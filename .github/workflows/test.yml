@@ -12,15 +12,23 @@ jobs:
     strategy:
       matrix:
         perl-version: ['5.8','5.10','5.16','latest']
+        platform: ubuntu-latest
 
     runs-on: ${{ matrix.platform }}
 
     container:
       image: perl:${{ matrix.perl-version }}
-      
+
     steps:
     - name: Check out code
       uses: actions/checkout@v1
+
+    - name: perl -V
+      run: |
+        perl -V
+
+    - name: Install Dependencies
+        run: curl -sL https://git.io/cpm | perl - install -g --show-build-log-on-failure
 
     - name: Tesing
       run: |
