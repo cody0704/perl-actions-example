@@ -4,14 +4,12 @@ use strict;
 use warnings;
 use Test::More;
 
-use Plack::Test;
-use HTTP::Request::Common;
 use Sample;
 
-my $app = Sample->app;
-my $test = Plack::Test->create($app);
+is(Sample::fun1,'Trigger the GitHub Actions, traefik workshop!','string');
 
-my $res = $test->request(GET '/');
-is $res->code, 200;
+is(Sample::fun2('200'),'200','echo');
+
+is(Sample::fun3('2','00'),'200','concat');
 
 done_testing;
